@@ -1,0 +1,40 @@
+server:
+  port: 8888
+
+zhcs:
+  open:
+    # API服务器配置
+    server:
+      ip: 10.6.160.101
+      port: 7902
+      prefix: https://${zhcs.open.server.ip}:${zhcs.open.server.port}/zhcs
+
+    # 认证相关配置
+    auth:
+      realm: TheNextService
+      encrypt-type: MD5
+      url: /openApi/smc-ac/v1/accounts/authorize
+
+    # 资源服务器配置
+    resource-server:
+      ip: 10.6.160.101
+      port: 7902
+      prefix: https://${zhcs.open.resource-server.ip}:${zhcs.open.resource-server.port}
+
+    # 资源接口配置
+    resource:
+      network-status-url: /zhcs/openApi/resource-catalog/cockpit/statistics/network/status
+      district-url: /zhcs/openApi/resource-catalog/video/channel/statistics/district
+      dept-url: /zhcs/openApi/resource-catalog/video/access/statistics/times/dept
+      algorithm-url: /zhcs/openApi/ability/management/algorithm/page
+      default-auth:
+        username: admin
+        password: Admin123
+        role-type: "001"
+
+    # 登录配置
+    login:
+      url: http://10.6.146.44/sjzz-prod-api/login
+      username: superAdminSjzz
+      password: dnlkg+0wmS1p1HdQ8wcj/uSc2kDUAXnnTdeveFFu9PSQ4kI+OrwRh5OjK0CK61JyuRMm/15isRtaHVPB8+K0C4UV5F5Y3mBosPqnC+qUZZr8kWRmwR9bGwMqejG5zI4QzVq4wIVGAqedgA0GcN4PFH4I+UAP6ZQEST3ZYlT9im5RuinEGfoVzAOqFi45znrwL1TI7z4woS9Slz5gDWazZRTEsiLGKAPa+iO0fk7nI4rln/p3Ug47wnAiqmJs6JDrI9+iyn77XNg3mMwJnbe8s2lRr1IUGpWjlUqcpFKwoCSKrk1VlBDgs6xQdaNedT3i9PfIbWDGQm5ytTznySMohw==
+      client-type: winpc
