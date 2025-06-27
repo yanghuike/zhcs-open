@@ -1,0 +1,33 @@
+server:
+  port: 8888
+
+zhcs:
+  open:
+    # API服务器配置
+    server:
+      ip: 10.6.160.101
+      port: 7902
+      prefix: https://${zhcs.open.server.ip}:${zhcs.open.server.port}/zhcs
+
+    # 认证相关配置
+    auth:
+      realm: TheNextService
+      encrypt-type: MD5
+      url: /openApi/smc-ac/v1/accounts/authorize
+
+    # 资源服务器配置
+    resource-server:
+      ip: 10.6.160.101
+      port: 7902
+      prefix: https://${zhcs.open.resource-server.ip}:${zhcs.open.resource-server.port}
+
+    # 资源接口配置
+    resource:
+      network-status-url: /zhcs/apiserve/resource-catalog/video/channel/statistics/network/status
+      district-url: /zhcs/openApi/resource-catalog/video/channel/statistics/district
+      dept-url: /zhcs/openApi/resource-catalog/video/access/statistics/times/dept
+      algorithm-url: /zhcs/openApi/ability/management/algorithm/page
+      default-auth:
+        username: admin
+        password: Admin123
+        role-type: "001"
