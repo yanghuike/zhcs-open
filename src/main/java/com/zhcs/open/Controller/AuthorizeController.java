@@ -123,11 +123,10 @@ public class AuthorizeController {
     @GetMapping("/selectCountByAppealType")
     public String selectCountByAppealType() {
         String token = getToken();
-        String tokens = HttpUtil.createPost("http://10.6.146.44/sjzz-prod-api/sjzz/caseInfo/analysis/analysisByStatus?timeType=1")
+        return HttpUtil.createPost("http://10.6.146.44/sjzz-prod-api/sjzz/caseInfo/analysis/analysisByStatus?timeType=1")
                 .header("authorization", "Bearer "+token)
                 .header("cookie", "Admin-Token="+token)
                 .execute().body();
-        return tokens;
     }
 
 
@@ -140,11 +139,10 @@ public class AuthorizeController {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         LocalDate endDate = LocalDate.now().minusMonths(1);
         String beginTime = endDate.format(formatter);
-        String tokens = HttpUtil.createPost("http://10.6.146.44/sjzz-prod-api/sjzz/caseInfo/analysis/analysisCountByAreaDeptHandle?beginTime="+beginTime+"&endTime="+endTime)
+        return HttpUtil.createPost("http://10.6.146.44/sjzz-prod-api/sjzz/caseInfo/analysis/analysisCountByAreaDeptHandle?beginTime="+beginTime+"&endTime="+endTime)
                 .header("authorization", "Bearer "+token)
                 .header("cookie", "Admin-Token="+token)
                 .execute().body();
-        return tokens;
     }
 
 
@@ -157,11 +155,10 @@ public class AuthorizeController {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         LocalDate endDate = LocalDate.now().minusMonths(1); // 减去一个月
         String beginTime = endDate.format(formatter);
-        String tokens = HttpUtil.createPost("http://10.6.146.44/sjzz-prod-api/sjzz/caseInfo/analysis/analysisCountByAreaStreetHandle?beginTime="+beginTime+"&endTime="+endTime)
+        return HttpUtil.createPost("http://10.6.146.44/sjzz-prod-api/sjzz/caseInfo/analysis/analysisCountByAreaStreetHandle?beginTime="+beginTime+"&endTime="+endTime)
                 .header("authorization", "Bearer "+token)
                 .header("cookie", "Admin-Token="+token)
                 .execute().body();
-        return tokens;
     }
 
     /**
@@ -177,11 +174,10 @@ public class AuthorizeController {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         LocalDate endDate = LocalDate.now().minusMonths(1); // 减去一个月
         String beginTime = endDate.format(formatter);
-        String tokens = HttpUtil.createPost("http://10.6.146.44/sjzz-prod-api/sjzz/caseInfo/analysis/analysisScoreByDisposeUnitNameList?beginTime="+beginTime+"&endTime="+endTime+"&reviewObjType=2")
+        return HttpUtil.createPost("http://10.6.146.44/sjzz-prod-api/sjzz/caseInfo/analysis/analysisScoreByDisposeUnitNameList?beginTime="+beginTime+"&endTime="+endTime+"&reviewObjType=2")
                 .header("authorization", "Bearer "+token)
                 .header("cookie", "Admin-Token="+token)
                 .execute().body();
-        return tokens;
     }
 
     /**
@@ -197,12 +193,26 @@ public class AuthorizeController {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         LocalDate endDate = LocalDate.now().minusMonths(1); // 减去一个月
         String beginTime = endDate.format(formatter);
-        String tokens = HttpUtil.createPost("http://10.6.146.44/sjzz-prod-api/sjzz/caseInfo/analysis/analysisScoreByDisposeUnitNameList?beginTime="+beginTime+"&endTime="+endTime+"&reviewObjType=1")
+        return HttpUtil.createPost("http://10.6.146.44/sjzz-prod-api/sjzz/caseInfo/analysis/analysisScoreByDisposeUnitNameList?beginTime="+beginTime+"&endTime="+endTime+"&reviewObjType=1")
                 .header("authorization", "Bearer "+token)
                 .header("cookie", "Admin-Token="+token)
                 .execute().body();
-        return tokens;
     }
+
+    /**
+     * 市单位
+     * @return
+     */
+    @GetMapping("/selectCountByChannelId")
+    public String selectCountByChannelId() {
+        String token = getToken();
+        return HttpUtil.createPost("http://10.6.146.44/sjzz-prod-api/sjzz/caseInfo/analysis/selectCountByChannelId?timeType=1")
+                .header("authorization", "Bearer "+token)
+                .header("cookie", "Admin-Token="+token)
+                .execute().body();
+    }
+
+
 
     public String getToken() {
         JSONObject json = new JSONObject();
